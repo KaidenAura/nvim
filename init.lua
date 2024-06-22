@@ -17,7 +17,14 @@ set.expandtab = true
 set.tabstop = 2
 set.shiftwidth = 2
 set.smartindent = true
-vim.opt.clipboard = 'unnamedplus'
+set.signcolumn = 'yes'
+set.smartcase = true
+set.undofile = true
+set.showmode = false
+set.splitright = true
+set.splitbelow = true
+set.hlsearch = true
+set.clipboard = 'unnamedplus'
 
 
 vim.call('plug#begin')
