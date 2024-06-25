@@ -10,6 +10,11 @@ local Plug = vim.fn['plug#']
 -- keymaps
 
 vim.keymap.set({'i'}, 'jk', '<ESC>')
+vim.keymap.set({'n'}, '<c-k>', ':wincmd k<CR>')
+vim.keymap.set({'n'}, '<c-j>', ':wincmd j<CR>')
+vim.keymap.set({'n'}, '<c-h>', ':wincmd h<CR>')
+vim.keymap.set({'n'}, '<c-l>', ':wincmd l<CR>')
+vim.keymap.set({'n'}, '<leader>t', ':TestSuite<CR>')
 
 vim.wo.relativenumber = true
 set.termguicolors = true
@@ -40,6 +45,10 @@ Plug('tpope/vim-fugitive')
 Plug('tpope/vim-commentary')
 Plug('catppuccin/nvim', { ['as'] = 'catppuccin' })
 Plug('nvim-lualine/lualine.nvim')
+Plug('christoomey/vim-tmux-navigator')
+Plug('vim-test/vim-test')
+Plug('preservim/vimux')
+Plug('airblade/vim-gitgutter')
 vim.call('plug#end')
 
 
@@ -53,7 +62,7 @@ require('lualine').setup {
       theme = "catppuccin-frappe"
     }
 }
-require('coc.coc')
+require('plugins.coc')
 require("nvim-tree").setup({
   sort = {
     sorter = "case_sensitive",
@@ -110,8 +119,9 @@ require('nvim-treesitter.configs').setup {
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<cr>')
-vim.keymap.set('n', '<leader>f', '<cmd>Files<cr>')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+require('plugins.vim-test')
